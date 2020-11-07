@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>NAPI</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="static/css/style.css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- Button, Radio Button, and Search Bar Underline Color-->
+  <style>
+    [type="radio"]:checked + span:after,
+    [type="radio"].with-gap:checked + span:after {
+        background-color: #03a9f4;
+        border-color: #03a9f4;
+    }
+    input[type="checkbox"]:checked + span:not(.lever)::before{
+        border:2px solid transparent;
+        border-bottom:2px solid #03a9f4;
+        border-right:2px solid #03a9f4;
+        background:transparent;
+    }
+    .btn, .btn-small {
+        background-color: #03a9f4;
+    }
+    .btn:hover, .btn-small:hover {
+        background-color: #2196F3;
+    }
+    /* label underline focus color */
+    .input-field input[type=text]:focus {
+        border-bottom: 1px solid #03a9f4 !important;
+        box-shadow: 0 1px 0 0 #03a9f4 !important
+    }
+
+</style>
+</head>
+<body>
+
+  <!------- Navigation Bar ------->
+  <nav class="blue" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">NAPI</a>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+
+      <br><br>
+      <h1 class="header center blue-text">NAPI</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A search web application. Get started below.</h5>
+      </div>
+
+      <!-- Search Bar and Categories-->
+      <form method="post", id = "search">
+        <div class="input-field">
+        <input type="text" name="term"
+          placeholder="i.e. Among Us, Lebron James, Capital One, etc." required>
+        </div>
+
+        <label>
+          <input name="category" type="radio" value="entertainment" checked value="this" />
+          <span>Entertainment</span>
+        </label>
+        <label>
+          <input name="category" type="radio" value="sports" checked value="this" />
+          <span>Sports</span>
+        </label>
+        <label>
+          <input name="category" type="radio" value="technology" checked value="this" />
+          <span>Technology |&nbsp&nbsp</span>
+        </label>
+        <a class="waves-effect waves-light btn-small" href="/advanced_index">Advanced Search</a>
+
+        <!-- Submit button -->
+        <p>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Search!
+            <i class="material-icons right">send</i>
+        </button>
+        </p>
+
+      </form>
+      <br><br>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
+      <div class="row">
+
+        <!-- Supported Features -->
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">NAPI Basic</h5>
+            <ul>
+                <li>- Basic search based on search word(s) and a category between entertainment, sports, and technology</li>
+                <p></p>
+                <li>- Limited to 20 search results</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Advanced Search -->
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">flash_auto</i></h2>
+            <h5 class="center">NAPI Advanced</h5>
+            <ul>
+                <li>- More advanced search based on specified search queries, relevancy, popularity, domains, and publish date</li>
+                <p></p>
+                <li>- Displays up to 100 search results</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br><br>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer blue">
+    <div class="container">
+      <div class="row">
+        <h5 class="white-text">About</h5>
+        <p class="grey-text text-lighten-4">Created using the News API for the Capital One Summit Coding Challenge.</p>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Andrew Nam<a href="https://github.com/andknam" target="_blank">
+        <i class="fa fa-github w3-hover-opacity"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/andrew-k-nam/" target="_blank">
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="static/js/materialize.js"></script>
+  <script src="static/js/init.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // select
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+
+    // date picker
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+  });
+
+  </script>
+
+  </body>
+</html>

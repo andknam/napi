@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>NAPI</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="static/css/style.css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+<body>
+
+  <!------- Navigation Bar ------->
+  <nav class="teal" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/advanced_index" class="brand-logo">NAPI</a>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center teal-text">NAPI Advanced Search</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A search web application. Get started below.</h5>
+      </div>
+
+      <!-- Search Bar and Categories-->
+      <form method="POST", id="options">
+        <div class="input-field">
+        <input type="text" name="term"
+          placeholder="i.e. Among Us, Lebron James, Capital One, etc." required>
+        </div>
+        <label>
+          <input name="category" type="radio" value="entertainment" checked value="this" />
+          <span>Entertainment</span>
+        </label>
+        <label>
+          <input name="category" type="radio" value="sports" checked value="this" />
+          <span>Sports</span>
+        </label>
+        <label>
+          <input name="category" type="radio" value="technology" checked value="this" />
+          <span>Technology |&nbsp&nbsp</span>
+        </label>
+        <a class="waves-effect waves-light btn-small" href="/">Basic Search</a>
+
+        <!-- How to use Advanced Search -->
+        <p><label>Using Advanced Search: </label></p>
+        <ul>
+            <li>- Surround phrases with quotes (") for exact match.</li>
+            <li>- Prepend words or phrases that must appear with a + symbol. (Eg: +bitcoin)</li>
+            <li>- Prepend words that must not appear with a - symbol. (Eg: -bitcoin)</li>
+            <li>- Alternatively you can use the AND / OR / NOT keywords, and optionally group these with parenthesis.
+            (Eg: crypto AND (ethereum OR litecoin) NOT bitcoin)</li>
+        </ul>
+
+        <!-- Query in Article Title -->
+        <p>
+            <label>
+            <input type="checkbox" name="articleTitle"/>
+            <span>Search word(s) show up in Article Title (default is article body)</span>
+            </label>
+        </p>
+
+        <!-- Sort By -->
+        <div class="col s12 m4">
+            <label>Sort By:</label>
+            <div class="input-field col s12">
+                <select name = "sortBy">
+                <option value="0">Publish Date (default) - newest articles come first</option>
+                <option value="1">Reversed Publish Date - oldest articles come first</option>
+                <option value="2">Relevancy - articles more related to your search query come first</option>
+                <option value="3">Popularity - articles from popular sources and publishers come first</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Published Date -->
+        <div class = "row">
+            <div class="col s12 m4">
+                <label>Oldest Published:</label>
+                <input name="oldest" type="text" class="datepicker">
+            </div>
+            <div class="col s12 m4">
+                <label>Newest Published:</label>
+                <input name="newest" type="text" class="datepicker">
+            </div>
+        </div>
+
+        <!-- Sources -->
+        <div class="col s12 m4">
+            <label>Sources:</label>
+            <div class="input-field col s12">
+                <select multiple name="add_sources">
+                    <option value="" disabled selected>Choose Sources! (up to 20)</option>
+                    <option value="0">abc-news </option>
+                    <option value="1">abc-news-au </option>
+                    <option value="2">aftenposten </option>
+                    <option value="3">al-jazeera-english </option>
+                    <option value="4">ansa </option>
+                    <option value="5">argaam </option>
+                    <option value="6">ars-technica </option>
+                    <option value="7">ary-news </option>
+                    <option value="8">associated-press </option>
+                    <option value="9">australian-financial-review </option>
+                    <option value="10">axios </option>
+                    <option value="11">bbc-news </option>
+                    <option value="12">bbc-sport </option>
+                    <option value="13">bild </option>
+                    <option value="14">blasting-news-br </option>
+                    <option value="15">bleacher-report </option>
+                    <option value="16">bloomberg </option>
+                    <option value="17">breitbart-news </option>
+                    <option value="18">business-insider </option>
+                    <option value="19">business-insider-uk </option>
+                    <option value="20">buzzfeed </option>
+                    <option value="21">cbc-news </option>
+                    <option value="22">cbs-news </option>
+                    <option value="23">cnn </option>
+                    <option value="24">cnn-es </option>
+                    <option value="25">crypto-coins-news </option>
+                    <option value="26">der-tagesspiegel </option>
+                    <option value="27">die-zeit </option>
+                    <option value="28">el-mundo </option>
+                    <option value="29">engadget </option>
+                    <option value="30">entertainment-weekly </option>
+                    <option value="31">espn </option>
+                    <option value="32">espn-cric-info </option>
+                    <option value="33">financial-post </option>
+                    <option value="34">focus </option>
+                    <option value="35">football-italia </option>
+                    <option value="36">fortune </option>
+                    <option value="37"> four-four-two </option>
+                    <option value="38"> fox-news </option>
+                    <option value="39"> fox-sports </option>
+                    <option value="40"> globo </option>
+                    <option value="41"> google-news </option>
+                    <option value="42"> goteborgs-posten </option>
+                    <option value="43"> gruenderszene </option>
+                    <option value="44"> hacker-news </option>
+                    <option value="45"> handelsblatt </option>
+                    <option value="46"> ign </option>
+                    <option value="47"> il-sole-24-ore </option>
+                    <option value="48"> independent </option>
+                    <option value="49"> infobae </option>
+                    <option value="50"> info-money </option>
+                    <option value="51"> la-gaceta </option>
+                    <option value="52"> la-nacion </option>
+                    <option value="53"> la-repubblica </option>
+                    <option value="54"> le-monde </option>
+                    <option value="55"> lenta </option>
+                    <option value="56"> lequipe </option>
+                    <option value="57"> les-echos </option>
+                    <option value="58"> liberation </option>
+                    <option value="59"> marca </option>
+                    <option value="60"> mashable </option>
+                    <option value="61"> medical-news-today </option>
+                    <option value="62"> msnbc </option>
+                    <option value="63"> mtv-news </option>
+                    <option value="64"> mtv-news-uk </option>
+                    <option value="65"> national-geographic </option>
+                    <option value="66"> national-review </option>
+                    <option value="67"> nbc-news </option>
+                    <option value="68"> news24 </option>
+                    <option value="69"> new-scientist </option>
+                    <option value="70"> news-com-au </option>
+                    <option value="71"> newsweek </option>
+                    <option value="72"> new-york-magazine </option>
+                    <option value="73"> next-big-future </option>
+                    <option value="74"> nfl-news </option>
+                    <option value="75"> nhl-news </option>
+                    <option value="76"> nrk </option>
+                    <option value="77"> politico </option>
+                    <option value="78"> polygon </option>
+                    <option value="79"> rbc </option>
+                    <option value="80"> recode </option>
+                    <option value="81"> reddit-r-all </option>
+                    <option value="82"> reuters </option>
+                    <option value="83"> rt </option>
+                    <option value="84"> rte </option>
+                    <option value="85"> rtl-nieuws </option>
+                    <option value="86"> sabq </option>
+                    <option value="87"> spiegel-online </option>
+                    <option value="88"> svenska-dagbladet </option>
+                    <option value="89"> t3n </option>
+                    <option value="90"> talksport </option>
+                    <option value="91"> techcrunch </option>
+                    <option value="92"> techcrunch-cn </option>
+                    <option value="93"> techradar </option>
+                    <option value="94"> the-american-conservative </option>
+                    <option value="95"> the-globe-and-mail </option>
+                    <option value="96"> the-hill </option>
+                    <option value="97"> the-hindu </option>
+                    <option value="98"> the-huffington-post </option>
+                    <option value="99"> the-irish-times </option>
+                    <option value="100"> the-jerusalem-post </option>
+                    <option value="101"> the-lad-bible </option>
+                    <option value="102"> the-next-web </option>
+                    <option value="103"> the-sport-bible </option>
+                    <option value="104"> the-times-of-india </option>
+                    <option value="105"> the-verge </option>
+                    <option value="106"> the-wall-street-journal </option>
+                    <option value="107"> the-washington-post </option>
+                    <option value="108"> the-washington-times </option>
+                    <option value="109"> time </option>
+                    <option value="110"> usa-today </option>
+                    <option value="111"> vice-news </option>
+                    <option value="112"> wired </option>
+                    <option value="113"> wired-de </option>
+                    <option value="114"> wirtschafts-woche </option>
+                    <option value="115"> xinhua-net </option>
+                    <option value="116"> ynet </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Language -->
+        <div class="col s12 m4">
+            <label>Language:</label>
+            <div class="input-field col s12">
+                <select name = "language">
+                <option value="0">All Languages (default)</option>
+                <option value="1">Arabic</option>
+                <option value="2">German</option>
+                <option value="3">English</option>
+                <option value="4">Spanish</option>
+                <option value="5">French</option>
+                <option value="6">Hebrew</option>
+                <option value="7">Italian</option>
+                <option value="8">Dutch</option>
+                <option value="9">Norwegian</option>
+                <option value="10">Portugese</option>
+                <option value="11">Russian</option>
+                <option value="12">Northern Sami</option></option>
+                <option value="13">Chinese</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn waves-effect waves-light" type="submit" name="action">Search!
+            <i class="material-icons right">send</i>
+        </button>
+
+      <br><br>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <h5 class="white-text">About</h5>
+        <p class="grey-text text-lighten-4">Created using the News API for the Capital One Summit Coding Challenge.</p>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Andrew Nam<a href="https://github.com/andknam" target="_blank">
+        <i class="fa fa-github w3-hover-opacity"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/andrew-k-nam/" target="_blank">
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="static/js/materialize.js"></script>
+  <script src="static/js/init.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // select
+    var elems = document.querySelectorAll('select');
+    var instance = M.FormSelect.init(elems, options);
+
+    // date picker
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+
+    });
+  </script>
+
+  </body>
+</html>

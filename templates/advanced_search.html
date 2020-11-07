@@ -1,0 +1,61 @@
+<html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>NAPI</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+  <body>
+    <!------- Navigation Bar ------->
+    <nav class="teal" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/advanced_index" class="brand-logo">NAPI</a>
+    </div>
+    </nav>
+
+
+    <!-- Results -->
+    <form>
+        <div class="inner-form">
+
+            <!-- Results and another search -->
+            <div style="border-radius: 15px 15px 15px 15px">
+                <div class="container">
+                <br><br>
+                <h1 class="header center teal-text">Advanced Search Results</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light"><a href="/advanced_index">
+                    To make another search, click here!</a></h5>
+                </div>
+
+            <!-- List of results -->
+            {% for result in search_results %}
+            <img src="{{ result['urlToImage'] }}" width="256" alt="Not Found" onerror=this.src="static/no-image-icon.png">
+            <div class="result-name"><a href="{{ result['url'] }}" target="_blank"><u><b>{{ result['title'] }}</b></u>
+            </a></div>
+            <div class="search-details">
+                <span class="result-source">{{ result['source'] }}</span>
+                <span class="result-publishedAt">{{ result['publishedAt'] }}</span>
+            </div>
+            <div class="result-url">{{ result['url'] }}</div>
+            <div class="result-description">{{ result['description'] }}</div>
+            <br>
+            {% endfor %}
+            </div>
+          </div>
+      </form>
+    </body>
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/materialize.js"></script>
+    <script src="static/js/init.js"></script>
+
+</html>
